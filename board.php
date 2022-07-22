@@ -1,4 +1,6 @@
 <?php
+// Call Centre opening times 08:00 to 20:00 Delayed refresh
+if ( date('Hi') < '0800' || date('Hi') > '2000' ) { $webrefresh = 1200; } else { $webrefresh = 8; }
 ini_set('error_reporting', E_ALL & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED);
 
 $ast_server_ip = "127.0.0.1";
@@ -8,6 +10,7 @@ $ast_mgr_pass  = "pass"; // access key
 $ast_queue = array(8888); // comma separated queue numbers
 
 $socket = fsockopen($ast_server_ip, $ast_ami_port, $errno, $errstr, $timeout);
+if (!is_resource($socket)){ fclose($socket); die('Connection failed<br>Please try again later'); }
 fputs($socket, "Action: Login\r\nUserName: $ast_mgr_user\r\nSecret: $ast_mgr_pass\r\n\r\n");
 fputs($socket, "Action: QueueStatus\r\n\r\nAction: Logoff\r\n\r\n");
 while (!feof($socket)) { $queueinfo .= fread($socket, 8192); }
