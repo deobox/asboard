@@ -21,7 +21,7 @@ $arr = explode("\r\n\r\n", $queueinfo);
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv='refresh' content='7'>
+<meta http-equiv='refresh' content='<?php echo "$webrefresh"?>'>
 <style>
 body { background-color: #000000; }
 .box { background: #000000 none repeat scroll 0 0; border-color: #CCCCCC; border-radius: 25px; border-width: 1 1px; border-style: solid; text-align:center; color: #ffffff; font-family: Calibri,Tahoma,Arial; font-size: 100px; font-weight: bold; line-height: 1.3em; margin: 0; padding: 20px 20px 20px 20px; width: 500px; }
